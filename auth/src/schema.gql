@@ -2,20 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Session {
-  accessToken: ID!
-  refreshToken: String!
-}
-
 type User {
   id: ID!
   name: String!
   email: String!
 }
 
+type Session {
+  accessToken: ID!
+  refreshToken: String!
+  user: User!
+}
+
 type Query {
   users: [User!]!
   user(id: String!): User!
+  me: User!
 }
 
 type Mutation {
@@ -24,6 +26,7 @@ type Mutation {
   removeUser(id: String!): User!
   createSession(data: CreateSessionInput!): Session!
   updateSession(refreshToken: String!): Session!
+  updateMe(data: UpdateMeInput!): User!
 }
 
 input CreateUserInput {
@@ -46,9 +49,17 @@ input UpdateUserInput {
   email: String
   password: String
   role: Role
+  id: ID!
 }
 
 input CreateSessionInput {
   email: String!
   password: String!
+}
+
+input UpdateMeInput {
+  name: String
+  email: String
+  password: String
+  role: Role
 }

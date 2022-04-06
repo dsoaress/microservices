@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
 
+import { User } from '../user/user.entity'
+
 @ObjectType()
 export class Session {
   @Field(() => ID)
@@ -7,4 +9,7 @@ export class Session {
 
   @Field(() => String)
   refreshToken: string
+
+  @Field(() => User)
+  user: User
 }

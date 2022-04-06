@@ -1,9 +1,13 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
+import { APP_GUARD } from '@nestjs/core'
 import { GraphQLModule } from '@nestjs/graphql'
 import path from 'node:path'
 
+import { JwtAuthGuard } from '../common/guard/jwt-auth.guard'
+import { RolesGuard } from '../common/guard/roles.guard'
+import { MeModule } from './me/me.module'
 import { SessionModule } from './session/session.module'
 import { UserModule } from './user/user.module'
 
@@ -15,7 +19,12 @@ import { UserModule } from './user/user.module'
       driver: ApolloDriver
     }),
     UserModule,
-    SessionModule
+    SessionModule,
+    MeModule
+  ],
+  providers: [
+    { provide: APP_GUARD, useClass: JwtAuthGuard },
+    { provide: APP_GUARD, useClass: RolesGuard }
   ]
 })
 export class HttpModule {}
