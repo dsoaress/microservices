@@ -3,12 +3,12 @@
 # ------------------------------------------------------
 
 type Session {
-  accessToken: String!
+  accessToken: ID!
   refreshToken: String!
 }
 
 type User {
-  id: String!
+  id: ID!
   name: String!
   email: String!
 }
@@ -33,7 +33,9 @@ input CreateUserInput {
   role: Role
 }
 
-"""Role of the user"""
+"""
+Role of the user
+"""
 enum Role {
   ADMIN
   USER
