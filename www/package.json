@@ -1,10 +1,10 @@
 {
-  "name": "client",
+  "name": "www",
   "version": "0.0.1-alpha.0",
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "npx serve -s dist"
   },
   "dependencies": {
