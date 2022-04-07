@@ -1,11 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { Role } from '@prisma/client'
 import { compare } from 'bcrypt'
 import dayjs from 'dayjs'
 
 import { PrismaService } from '../../prisma/prisma.service'
-import { User } from '../user/user.entity'
 import { UserService } from '../user/user.service'
 import { CreateSessionInput } from './input/create-session.input'
 

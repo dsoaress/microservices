@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id String @id @default(cuid())
+
+  userId  String   @unique
+  courses Course[]
+
+  createdAt DateTime @default(now())
+
+  @@map("students")
+}
+
+model Course {
+  id String @id @default(cuid())
+
+  stripeId    String
+  name        String
+  description String
+  price       Float
+  chapters    Chapter[]
+  students    Student[]
+  isActive    Boolean   @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("courses")
+}
+
+model Chapter {
+  id String @id @default(cuid())
+
+  name        String
+  description String
+  videoUrl    String
+
+  courseId String?
+  course   Course? @relation(fields: [courseId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("chapters")
+}
