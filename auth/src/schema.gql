@@ -36,9 +36,7 @@ input CreateUserInput {
   role: Role
 }
 
-"""
-Role of the user
-"""
+"""Role of the user"""
 enum Role {
   ADMIN
   USER

@@ -3,9 +3,7 @@
 # ------------------------------------------------------
 
 type Course {
-  """
-  Example field (placeholder)
-  """
+  """Example field (placeholder)"""
   exampleField: Int!
 }
 
@@ -27,16 +25,12 @@ type Mutation {
 }
 
 input CreateCourseInput {
-  """
-  Example field (placeholder)
-  """
+  """Example field (placeholder)"""
   exampleField: Int!
 }
 
 input UpdateCourseInput {
-  """
-  Example field (placeholder)
-  """
+  """Example field (placeholder)"""
   exampleField: Int
   id: Int!
 }
