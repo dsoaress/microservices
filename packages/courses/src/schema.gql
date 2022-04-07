@@ -16,6 +16,7 @@ type Query {
   students: [Student!]!
   student(id: String!): Student!
   course(id: Int!): Course!
+  me: Student!
 }
 
 type Mutation {

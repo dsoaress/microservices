@@ -8,6 +8,7 @@ import path from 'node:path'
 import { JwtAuthGuard } from '../common/guard/jwt-auth.guard'
 import { RolesGuard } from '../common/guard/roles.guard'
 import { CourseModule } from './course/course.module'
+import { MeModule } from './me/me.module'
 import { StudentModule } from './student/student.module'
 
 @Module({
@@ -18,7 +19,8 @@ import { StudentModule } from './student/student.module'
       driver: ApolloDriver
     }),
     StudentModule,
-    CourseModule
+    CourseModule,
+    MeModule
   ],
   providers: [
     { provide: APP_GUARD, useClass: JwtAuthGuard },
